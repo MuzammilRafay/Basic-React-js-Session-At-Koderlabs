@@ -1,25 +1,65 @@
-import logo from "./logo.svg";
+import { useEffect, useState } from "react";
+import CountDisplay from "./Components/CountDisplay/CountDisplay";
 import "./App.css";
 
 function App() {
+  // let count = 0;
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    console.log(count, "count");
+  }, [count]);
+
+  useEffect(() => {
+    console.log("first render");
+  }, []);
+
+  const incrementHandler = (event) => {
+    // count = count + 1;
+    // setCount(count + 1);
+    setCount((previousCount) => previousCount + 1);
+    // console.log(count, "count");
+  };
+
+  const decrementHandler = (event) => {
+    // count = count - 1;
+    // setCount(count - 1);
+    setCount((previousCount) => previousCount - 1);
+    // console.log(count, "count");
+  };
+
+  const tasks = [
+    {
+      name: "task one",
+    },
+    {
+      name: "task one",
+    },
+    {
+      name: "task one",
+    },
+    {
+      name: "task one",
+    },
+    {
+      name: "task one",
+    },
+    {
+      name: "task one",
+    },
+  ];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+      {/* <h2>Count {count}</h2> */}
+      <CountDisplay count={count} />
+      <button onClick={incrementHandler}>Increment</button>
+      <button onClick={decrementHandler}>Decrement</button>
 
-        <p>Hello My name is muzammil</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {tasks?.length &&
+        tasks.map((singleTask, index) => {
+          return <p key={index}>{singleTask?.name}</p>;
+        })}
     </div>
   );
 }

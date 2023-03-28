@@ -32,3 +32,49 @@ src/index.js - Main entrypoint to bootstrap the app.
 src/App.js - The root component of the app.
 src/App.spec.js - Unit tests for the app.
 src/*.css - Styles for the app.
+
+
+
+
+
+
+
+function useState(defaultValue){
+
+  //re render logic
+
+  return [getterValue,setterValue];
+}
+
+
+
+Normal Re Render States
+
+1-state change
+2-prop change 
+3-parent component re render
+
+
+use memo in while exporting the component and it will skip parent re rendering
+
+
+useEffect
+
+
+1-first render
+useEffect(()=>{
+
+},[]);
+
+2-depended value
+useEffect(()=>{
+
+},[state,props]);
+
+
+3-run on every re render
+const ref = useRef(0);
+
+useEffect(()=>{
+  ref.curent = ref.curent + 1; 
+})
