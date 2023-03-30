@@ -78,3 +78,17 @@ const ref = useRef(0);
 useEffect(()=>{
   ref.curent = ref.curent + 1; 
 })
+
+
+
+
+
+
+https://muzammil.com
+
+GET	/posts  (get all posts)
+GET	/posts/1 (get post by id)
+POST	/posts (store post)
+PUT	/posts/1 (update all fields of post)
+PATCH	/posts/1 (partially update field of post)
+DELETE	/posts/1 (delete post by id)
