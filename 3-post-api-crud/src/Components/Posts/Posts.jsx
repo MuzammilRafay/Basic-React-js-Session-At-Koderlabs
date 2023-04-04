@@ -1,7 +1,8 @@
-import React, { memo } from "react";
+import React, { memo, Children } from "react";
 
 function Posts(props) {
-  const { posts = [] } = props;
+  const { posts = [], deletePostHandler } = props;
+
   return (
     <table className="table table-hover">
       <thead>
@@ -14,7 +15,31 @@ function Posts(props) {
       </thead>
       <tbody>
         {posts?.length > 0 &&
-          posts?.map((singlePost) => {
+          posts?.map((singlePost, index) => {
+            return (
+              <tr key={singlePost?.id}>
+                <td>{singlePost?.id}</td>
+                <td>{singlePost?.title}</td>
+                <td>
+                  <button type="button" className="btn btn-primary">
+                    Edit
+                  </button>
+                </td>
+                <td>
+                  <button
+                    type="button"
+                    className="btn btn-danger"
+                    onClick={() => deletePostHandler(singlePost?.id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            );
+          })}
+
+        {/* {posts?.length > 0 &&
+          Children.map(posts, (singlePost) => {
             return (
               <tr key={singlePost?.id}>
                 <td>{singlePost?.id}</td>
@@ -31,7 +56,7 @@ function Posts(props) {
                 </td>
               </tr>
             );
-          })}
+          })} */}
       </tbody>
     </table>
   );
